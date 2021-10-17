@@ -23,19 +23,20 @@ while i < 4 do
 
     user_found = 0
     users.each do |user_hash|
-        if user_hash[:username] == username && user_hash[:password] == password
+        puts user_hash
+        puts user_hash[:username]
+        puts username
+
+        if user_hash['username'] == username && user_hash['password'] == password
             puts "This is your user object: #{user_hash}"
-            user_found = 1
         end
     end
 
-    if user_found == 1
-        break
-    elsif user_found == 0 && i < 3
+    if user_found == 0 && i < 3
         puts "Wrong credentials. Try again (you have #{3-i} attempts left)"
-    else
-        puts '[ERROR] You entered too many wrong credentials.'
     end
 
     i += 1
 end
+
+puts '[ERROR] You entered too many wrong credentials.'
