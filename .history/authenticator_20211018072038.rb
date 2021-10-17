@@ -7,13 +7,8 @@ users = [
     { username: "damian", password: "password6"}
 ]
 
-def auth_user(users_array, username, password)
-    users_array.each do |user_hash|
-        if user_hash[:username] == username && user_hash[:password] == password
-            return user_hash
-        end
-    end
-    "Wrong credentials." # The last line on a method is an implied return
+def auth_user(user_hash, username, password)
+
 end
 
 puts 'Welcome to the authenticator'
@@ -29,16 +24,27 @@ while i < 4 do
     username = gets.chomp
     print 'Password: '
     password = gets.chomp
-    
-    puts auth_user(users, username, password)
-    
-    if i < 3
-        print "Press 'n' to quit or any other key to continue: "
-        input = gets.chomp.downcase
-        break if input == 'n'
+
+    wrong_credentials = false
+    users.each do |user_hash|
+        if user_hash[:username] == username && user_hash[:password] == password
+            puts "This is your user object: #{user_hash}"
+            i = 0
+            wrong_credentials = false
+            break
+        else
+            wrong_credentials = true
+        end    
     end
+
+    if wrong_credentials == true
+        puts "Wrong credentials. Try again (you have #{4-i} attempts left)"
+    end
+
+    print "Press 'n' to quit or any other key to continue: "
+    input = gets.chomp.downcase
+    break if input == 'n'
     
     i += 1
 end
 
-puts "You have exceeded the number of attemprs" if i = 4

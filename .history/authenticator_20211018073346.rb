@@ -41,4 +41,3 @@ while i < 4 do
     i += 1
 end
 
-puts "You have exceeded the number of attemprs" if i = 4

@@ -8,12 +8,18 @@ users = [
 ]
 
 def auth_user(users_array, username, password)
+    wrong_credentials = false
     users_array.each do |user_hash|
         if user_hash[:username] == username && user_hash[:password] == password
+            wrong_credentials = false
             return user_hash
-        end
+        else
+            wrong_credentials = true
+        end    
     end
-    "Wrong credentials." # The last line on a method is an implied return
+    if wrong_credentials == true
+        return "Wrong credentials."
+    end
 end
 
 puts 'Welcome to the authenticator'
@@ -41,4 +47,3 @@ while i < 4 do
     i += 1
 end
 
-puts "You have exceeded the number of attemprs" if i = 4

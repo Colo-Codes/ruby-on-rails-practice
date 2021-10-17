@@ -13,7 +13,7 @@ def auth_user(users_array, username, password)
             return user_hash
         end
     end
-    "Wrong credentials." # The last line on a method is an implied return
+    return "Wrong credentials."
 end
 
 puts 'Welcome to the authenticator'
@@ -41,4 +41,3 @@ while i < 4 do
     i += 1
 end
 
-puts "You have exceeded the number of attemprs" if i = 4
