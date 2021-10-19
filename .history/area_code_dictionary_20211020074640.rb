@@ -38,7 +38,7 @@ loop do
 
   dial_book.each do |city, code|
     if city == user_input_city.downcase
-      puts " -> The zip code for #{city} is #{code}."
+      puts " ANSWER: The zip code for #{city} is #{code}."
     end
   end
 end

@@ -23,7 +23,7 @@ end
  
 # Execution flow
 loop do
-  print 'Do you want to lookup an area code based on a city name? (Y/N): '
+  puts 'Do you want to lookup an area code based on a city name? (Y/N)'
   user_input = gets.chomp
   
   if user_input.downcase != 'y'
@@ -38,7 +38,7 @@ loop do
 
   dial_book.each do |city, code|
     if city == user_input_city.downcase
-      puts " -> The zip code for #{city} is #{code}."
+      puts " ANSWER: The zip code for #{city} is #{code}."
     end
   end
 end
