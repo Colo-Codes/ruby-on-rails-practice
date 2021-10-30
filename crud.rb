@@ -26,6 +26,19 @@ end
 
 puts create_secure_passwords(users)
 
+def authenticate_user(username, password, list_of_users)
+  list_of_users.each do |user_record|
+    if user_record[:username] == username && verify_hash_digest(user_record[:password]) == password
+      return user_record
+    end
+  end
+  "Credentials were not correct"
+end
+
+20.times {print "-"}
+puts
+puts authenticate_user("damian", "password6", users)
+puts authenticate_user("damian", "wrongpass", users)
 
 #=> {:username=>"mashrur", :password=>"$2a$12$BDjTdUozMzmEL5IrnyFbqO1YM7iwbioqUBn/vfYMKRkA/2WDsuZmu"}
 #=> {:username=>"jack", :password=>"$2a$12$2P590gB9hXMterswF7IjzOrIiGm3ycKwj2KTnj7ZOMdh5nyCCGM5S"}
