@@ -13,12 +13,12 @@ dial_book = {
  
 # Get city names from the hash
 def get_city_names(somehash)
-# Write code here
+  somehash.keys
 end
  
 # Get area code based on given hash and key
 def get_area_code(somehash, key)
-# Write code here
+  somehash[key] if somehash.include? key
 end
  
 # Execution flow
@@ -28,15 +28,16 @@ loop do
   
   break if user_input.downcase != 'y'
 
-  dial_book.each do |city, code|
-    puts " -> #{city}"
-  end
+  get_city_names(dial_book).each {|city| puts " -> #{city}"}
+  
   print 'Type a city name: '
   user_input_city = gets.chomp
 
-  dial_book.each do |city, code|
-    if city == user_input_city.downcase
-      puts " -> The zip code for #{city} is #{code}."
-    end
+  city_result = get_area_code(dial_book, user_input_city.downcase)
+  if city_result.nil?
+    puts " -> The city you entered does not exists on dictionary."
+  else
+    puts " -> The zip code for #{user_input_city} is #{city_result}."
   end
+  
 end

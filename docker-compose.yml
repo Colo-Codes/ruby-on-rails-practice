@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  rubyonrailspractice:
+    image: rubyonrailspractice
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: ruby_practice_container_1
+    ports:
+      - 3000:3000
